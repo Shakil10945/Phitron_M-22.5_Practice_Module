@@ -99,19 +99,19 @@ void rotateClock(Node* &head, int x)
         count++;
     }
 
-    while(temp->Next!=NULL)
+    while(temp->Next->Next!=NULL)
     {
         Node* temp2=temp->Next;
         while(temp2->Next->Next!=NULL)
         {
             temp2=temp2->Next;
         }
-        insertAtHead(temp2->Next,temp2->Next->value);
+        insertAtHead(head,temp2->Next->value);
         Node* delNode=temp2->Next;
         temp2->Next=NULL;
         delete delNode;
     }
-    insertAtHead(temp->Next,temp->Next->value);
+    insertAtHead(head,temp->Next->value);
     Node *delNode=temp->Next;
     temp->Next=NULL;
     delete delNode;
