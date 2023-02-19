@@ -1,3 +1,99 @@
+Answer from the chatgpt
+//
+#include <iostream>
+using namespace std;
+
+class Node {
+public:
+    int value;
+    Node* next;
+
+    Node(int val) {
+        value = val;
+        next = NULL;
+    }
+};
+
+void insertAtTail(Node* &head, int val) {
+    Node* newNode = new Node(val);
+    if (head == NULL) {
+        head = newNode;
+        return;
+    }
+
+    Node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = newNode;
+}
+
+void display(Node* head) {
+    if (head == NULL) {
+        cout << "Your Linked List is empty" << endl;
+        return;
+    }
+
+    Node* temp = head;
+    while (temp != NULL) {
+        cout << temp->value;
+        if (temp->next != NULL) {
+            cout << "->";
+        }
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+void rotateClock(Node* &head, int k) {
+    if (head == NULL || k == 0) {
+        return;
+    }
+
+    int count = 1;
+    Node* temp = head;
+    while (count < k && temp != NULL) {
+        temp = temp->next;
+        count++;
+    }
+
+    if (temp == NULL) {
+        return;
+    }
+
+    Node* kthNode = temp;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+
+    temp->next = head;
+    head = kthNode->next;
+    kthNode->next = NULL;
+}
+
+int main() {
+    Node* head = NULL;
+    int n, val, k;
+    cout << "Enter the number of nodes: ";
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        cout << "Enter the value of node " << i+1 << ": ";
+        cin >> val;
+        insertAtTail(head, val);
+    }
+
+    cout << "Enter the number of nodes to rotate: ";
+    cin >> k;
+    rotateClock(head, k);
+
+    cout << "Linked List after rotating " << k << " nodes: ";
+    display(head);
+
+    return 0;
+}
+/////////////////////////////////////////////
+
+
 #include<bits/stdc++.h>
 using namespace std;
 
