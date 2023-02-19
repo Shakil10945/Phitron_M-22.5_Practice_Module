@@ -117,3 +117,32 @@ void rotateClock(Node* &head, int x)
     delete delNode;
 
 }
+/*
+void rotateClock(Node* &head, int x)
+{
+    Node* temp=head;
+    int count=1;
+    while(count!=x)
+    {
+        temp=temp->Next;
+        count++;
+    }
+
+    while(temp->Next->Next!=NULL)
+    {
+        Node* temp2=temp->Next;
+        while(temp2->Next->Next!=NULL)
+        {
+            temp2=temp2->Next;
+        }
+        insertAtHead(head,temp2->Next->value);
+        Node* delNode=temp2->Next;
+        temp2->Next=NULL;
+        delete delNode;
+    }
+    insertAtHead(head,temp->Next->value);
+    Node *delNode=temp->Next;
+    temp->Next=NULL;
+    delete delNode;
+}
+*/
